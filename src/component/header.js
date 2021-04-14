@@ -22,6 +22,7 @@ class Header extends Component {
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Товары
                                 </a>
+                                {/*//todo fix this to call*/}
                                 <div className="dropdown-menu nav_bg" aria-labelledby="navbarDropdown">
                                     <a className="dropdown-item" href="Angora.html">Ангора</a>
                                     <a className="dropdown-item" href="Alpaca.html">Альпака</a>
@@ -31,7 +32,7 @@ class Header extends Component {
                                 </div>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link li_nav" href="info.html">О нас</a>
+                                <a className="nav-link li_nav" onClick={this.roteToInfo} href="">О нас</a>
                             </li>
                         </ul>
                         <ul className="ml-auto">
@@ -48,7 +49,11 @@ class Header extends Component {
     }
 
     roteToMainPage = () => {
-        this.props.history.push('/test')
+        this.props.history.push('/')
+    }
+
+    roteToInfo = () => {
+        this.props.history.push('/info')
     }
 
 }

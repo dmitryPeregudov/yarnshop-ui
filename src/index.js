@@ -4,15 +4,14 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Main_page from "./component/main_page";
-import Test from "./component/test";
 import Header from "./component/header";
-import { withRouter } from 'react-router'
+import Info from "./component/info";
 
 ReactDOM.render(
     <BrowserRouter>
-        <Header/>,
-        <Route exact path="/" component={Main_page}/>
-        <Route path="/test" component={Test}/>
+        <Header/>
+        <Route exact path={"/"} component={Main_page}/>
+        <Route exact path={"/info"} component={Info}/>
     </BrowserRouter>,
     document.getElementById('root'),
 );
