@@ -72,6 +72,7 @@ div.row a:hover{
 }
 .center{
 	text-align: center;
+	margin: auto;
 }
 .right{
 	text-align: right !important;
@@ -90,4 +91,16 @@ div.row a:hover{
 }
 a.color{
 	color: white;
+}
+
+div.displayInline{
+	display: inline-flex;
+}
+
+.displayRight{
+	margin-left: auto;
+}
+
+.fullWidth{
+	width: 100%;
 }

@@ -6,12 +6,18 @@ import reportWebVitals from './reportWebVitals';
 import Main_page from "./component/main_page";
 import Header from "./component/header";
 import Info from "./component/info";
+import Login from "./component/login";
+import LogoutComponent from "./component/logout";
+import Register from "./component/register";
 
 ReactDOM.render(
     <BrowserRouter>
         <Header/>
         <Route exact path={"/"} component={Main_page}/>
         <Route exact path={"/info"} component={Info}/>
+        <Route exact path={"/login"} component={Login}/>
+        <Route exact path={"/logout"} component={LogoutComponent}/>
+        <Route exact path={"/register"} component={Register}/>
     </BrowserRouter>,
     document.getElementById('root'),
 );
