@@ -1,10 +1,16 @@
 import {handleResult} from "./responce_handler";
 
 export const productService = {
-    getProducts
+    getProducts: getProductTypes,
+    getProductsByType
 }
-const productPath = '/productTypes'
+const productTypesPath = '/productTypes'
+const productBasePath = '/products'
 
-function getProducts() {
-    return fetch(productPath).then(data => handleResult(data));
+function getProductTypes() {
+    return fetch(productTypesPath).then(data => handleResult(data));
+}
+
+function getProductsByType(id) {
+    return fetch(productBasePath + '/type/' + id).then(data => handleResult(data));
 }

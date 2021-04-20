@@ -9,6 +9,9 @@ import Info from "./component/info";
 import Login from "./component/login";
 import LogoutComponent from "./component/logout";
 import Register from "./component/register";
+import ChangePassword from "./component/change_password";
+import ChangeInfo from "./component/change_info";
+import Product from "./component/product";
 
 ReactDOM.render(
     <BrowserRouter>
@@ -18,6 +21,9 @@ ReactDOM.render(
         <Route exact path={"/login"} component={Login}/>
         <Route exact path={"/logout"} component={LogoutComponent}/>
         <Route exact path={"/register"} component={Register}/>
+        <Route path={'/changePassword/:id'} component={ChangePassword}/>
+        <Route path={'/changeInfo/:id'} component={ChangeInfo}/>
+        <Route path={'/product/:id/:productName'} component={Product}/>
     </BrowserRouter>,
     document.getElementById('root'),
 );

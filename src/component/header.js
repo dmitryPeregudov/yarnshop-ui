@@ -43,7 +43,7 @@ class Header extends Component {
                                         <div>
                                             {this.state.products && this.state.products.map(product =>
                                                 <NavDropdown.Item key={product.id}
-                                                                  onClick={() => this.routeToProduct(product.id)}>{product.name}</NavDropdown.Item>
+                                                                  onClick={() => this.routeToProduct(product.id, product.name)}>{product.name}</NavDropdown.Item>
                                             )}
                                         </div>
                                     </NavDropdown>
@@ -52,8 +52,10 @@ class Header extends Component {
                                 <div className={"displayRight displayInline"}>
                                     {this.state.storage.isAuthenticated() ?
                                         <NavDropdown title={this.state.storage.getFirstName()} id="basic-nav-dropdown">
-                                            <NavDropdown.Item href="/changePassword">Сменить пароль</NavDropdown.Item>
-                                            <NavDropdown.Item href="/changeInfo">Сменить информацию</NavDropdown.Item>
+                                            <NavDropdown.Item onClick={this.routeToChangePassword}>Сменить
+                                                пароль</NavDropdown.Item>
+                                            <NavDropdown.Item onClick={this.routeToChangeInfo}>Сменить
+                                                информацию</NavDropdown.Item>
                                             <NavDropdown.Item href="/logout">Выйти</NavDropdown.Item>
                                         </NavDropdown>
                                         :
@@ -78,8 +80,15 @@ class Header extends Component {
     roteToInfo = () => {
         this.props.history.push('/info')
     }
-    routeToProduct = (productName) => {
-        this.props.history.push('/product?product=' + productName)
+    routeToProduct = (id, productName) => {
+        this.props.history.push('/product/' + id + '/' + productName)
+    }
+
+    routeToChangePassword = () => {
+        this.props.history.push("/changePassword/" + this.state.storage.getId())
+    }
+    routeToChangeInfo = () => {
+        this.props.history.push("/changeInfo/" + this.state.storage.getId());
     }
 
 }

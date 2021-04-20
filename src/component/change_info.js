@@ -1,13 +1,10 @@
 import {Component} from "react";
-import {validate} from "../validation/new_user_validation";
+import {validate} from "../validation/edit_user_info_validation";
 import {UserService} from "../service/user_service";
-import TokenStorage from "../service/token_storage";
 
-class Register extends Component {
+class ChangeInfo extends Component {
     state = {
-        login: '',
-        password: '',
-        passwordConfirm: '',
+        id: '',
         name: '',
         middleName: '',
         surName: '',
@@ -18,38 +15,17 @@ class Register extends Component {
         error: ''
     }
 
+    componentDidMount() {
+        this.state.id = this.props.match.params.id;
+        this.getUserInfo();
+    }
+
     render() {
         return (
             <div className={"container"}>
+                <img alt="oops" src={process.env.PUBLIC_URL + 'img/Alpaca.jpg'}/>
                 <div className="center">
                     <table className="center">
-                        <tr>
-                            <td>
-                                <div className={"form-group"}>
-                                    <input type="login" className={"form-control"} placeholder="Логин"
-                                           value={this.state.login}
-                                           onChange={this.eventChange} name="login" required="required"/>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div className={"form-group"}>
-                                    <input className={"form-control"} type="password" placeholder="Пароль"
-                                           value={this.state.password}
-                                           onChange={this.eventChange} name="password" required="required"/>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div className={"form-group"}>
-                                    <input className={"form-control"} type="password" placeholder="Подтвердите пароль"
-                                           value={this.state.passwordConfirm}
-                                           onChange={this.eventChange} name="passwordConfirm" required="required"/>
-                                </div>
-                            </td>
-                        </tr>
                         <tr>
                             <td>
                                 <div className={"form-group"}>
@@ -121,7 +97,7 @@ class Register extends Component {
                         <tr>
                             <td>
                                 <button className="btn btn-primary center"
-                                        onClick={this.addUser}>Зарегистрироваться
+                                        onClick={this.editUser}>Сохранить
                                 </button>
                             </td>
                         </tr>
@@ -131,23 +107,19 @@ class Register extends Component {
         )
     }
 
-    addUser = () => {
-        let error = validate(this.state.login, this.state.password, this.state.passwordConfirm,
-            this.state.name, this.state.middleName,
-            this.state.surName, this.state.address, this.state.email, this.state.post)
+    editUser = () => {
+        let error = validate(this.state.name, this.state.middleName,
+            this.state.surName, this.state.address, this.state.email, this.state.post);
         if (!error) {
-            UserService.createUser(this.state.login, this.state.password, this.state.name,
-                this.state.middleName, this.state.surName,
-                this.state.address, this.state.email, this.state.post, this.state.dateOfBirth)
+            UserService.changeInfo(this.state.name, this.state.middleName, this.state.surName,
+                this.state.address, this.state.email,
+                this.state.post, this.state.dateOfBirth, this.state.id)
                 .then(response => response.json())
                 .then(data => {
-                    const storage = new TokenStorage();
-                    storage.loginUser(data.id,data.token, data.firstName, data.lastName, data.role, data.login);
                     this.props.history.push('/')
                 })
                 .catch(throwable => {
-                    error = 'Что-то пошло не так'
-                    this.setState({error})
+                    throwable.json().then(json => this.setState({error: json.message}));
                 })
         } else this.setState({error})
     }
@@ -156,6 +128,23 @@ class Register extends Component {
         const {name, value} = event.target;
         this.setState({[name]: value})
     }
+
+    getUserInfo() {
+        UserService.findUserById(this.state.id)
+            .then(data => data.json())
+            .then(user => {
+                this.setState({name: user.name});
+                this.setState({middleName: user.middleName})
+                this.setState({surName: user.surName})
+                this.setState({address: user.address})
+                this.setState({email: user.email})
+                this.setState({post: user.post})
+                this.setState({dateOfBirth: user.dateOfBirth})
+            })
+            .catch(error => {
+            })
+
+    }
 }
 
-export default Register;
+export default ChangeInfo;

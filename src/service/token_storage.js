@@ -1,11 +1,13 @@
 class TokenStorage {
+    id = 'id'
     token = 'token';
     firstName = 'firstName';
     lastName = 'lastName';
     role = 'role';
     login = 'login';
 
-    loginUser(token, firstName, lastName, role, login) {
+    loginUser(id, token, firstName, lastName, role, login) {
+        localStorage.setItem(this.id, id)
         localStorage.setItem(this.login, login);
         localStorage.setItem(this.token, token);
         localStorage.setItem(this.firstName, firstName);
@@ -14,6 +16,7 @@ class TokenStorage {
     }
 
     logout() {
+        localStorage.removeItem(this.id);
         localStorage.removeItem(this.login);
         localStorage.removeItem(this.role);
         localStorage.removeItem(this.token);
@@ -23,6 +26,10 @@ class TokenStorage {
 
     getRole() {
         return localStorage.getItem(this.role)
+    }
+
+    getId() {
+        return localStorage.getItem(this.id);
     }
 
     getFirstName() {

@@ -21,7 +21,7 @@ function getToken(login, password) {
         .then(response => response.json())
         .then(data => {
             const storage = new TokenStorage();
-            storage.loginUser(data.token, data.firstName, data.lastName, data.role, data.login);
+            storage.loginUser(data.id, data.token, data.firstName, data.lastName, data.role, data.login);
             return data;
         })
 }
