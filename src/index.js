@@ -12,6 +12,7 @@ import Register from "./component/register";
 import ChangePassword from "./component/change_password";
 import ChangeInfo from "./component/change_info";
 import Product from "./component/product";
+import Cart from "./component/cart";
 
 ReactDOM.render(
     <BrowserRouter>
@@ -24,6 +25,7 @@ ReactDOM.render(
         <Route path={'/changePassword/:id'} component={ChangePassword}/>
         <Route path={'/changeInfo/:id'} component={ChangeInfo}/>
         <Route path={'/product/:id/:productName'} component={Product}/>
+        <Route path={'/cart'} component={Cart}/>
     </BrowserRouter>,
     document.getElementById('root'),
 );

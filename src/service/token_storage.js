@@ -22,6 +22,7 @@ class TokenStorage {
         localStorage.removeItem(this.token);
         localStorage.removeItem(this.firstName);
         localStorage.removeItem(this.lastName);
+        localStorage.removeItem("order")
     }
 
     getRole() {

@@ -23,7 +23,6 @@ class ChangeInfo extends Component {
     render() {
         return (
             <div className={"container"}>
-                <img alt="oops" src={process.env.PUBLIC_URL + 'img/Alpaca.jpg'}/>
                 <div className="center">
                     <table className="center">
                         <tr>

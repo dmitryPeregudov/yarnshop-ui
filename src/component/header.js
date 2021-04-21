@@ -63,7 +63,7 @@ class Header extends Component {
                                             <Nav.Link href="/register">Зарегистрироваться</Nav.Link>
                                             <Nav.Link href="/login">Войти</Nav.Link>
                                         </div>}
-                                    <Nav.Link href="/basket" className={"displayRight"}>Корзина</Nav.Link>
+                                    <Nav.Link href="/cart" className={"displayRight"}>Корзина</Nav.Link>
                                 </div>
                             </Nav>
                         </Navbar.Collapse>

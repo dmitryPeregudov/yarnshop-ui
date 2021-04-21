@@ -80,13 +80,18 @@ class Product extends Component {
 
     addProductToBash(product, event, context) {
         let orders = localStorage.getItem("order");
-        if (orders) {
+        let orderData = {
+            product: product,
+            quantity: 1
+        }
+        if (orders && orders.length !== 0) {
             orders = JSON.parse(orders);
             if (!this.isProductAddedToOrder(product)) {
-                orders.push(product);
+
+                orders.push(orderData);
             } else if (event.target.textContent === "Удалить") {
                 orders = orders.filter(function (order) {
-                    return order.id !== product.id;
+                    return order.product.id !== product.id;
                 })
             } else {
 
@@ -94,7 +99,7 @@ class Product extends Component {
             }
         } else {
             orders = [];
-            orders.push(product);
+            orders.push(orderData);
         }
         localStorage.setItem("order", JSON.stringify(orders))
         context.forceUpdate();
@@ -102,12 +107,12 @@ class Product extends Component {
 
     isProductAddedToOrder(product) {
         let orders = localStorage.getItem("order");
-        if (!orders) {
+        if (!orders || orders.length === 0) {
             return false
         }
         orders = JSON.parse(orders);
         return orders.find(function (order) {
-            return order.id === product.id;
+            return order.product.id === product.id;
         })
     }
 }

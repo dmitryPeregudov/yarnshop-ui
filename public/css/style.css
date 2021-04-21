@@ -104,3 +104,16 @@ div.displayInline{
 .fullWidth{
 	width: 100%;
 }
+
+.word-wrap{
+	word-wrap: break-word;
+}
+
+.center{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.width30{
+	width: 30%;
+}
