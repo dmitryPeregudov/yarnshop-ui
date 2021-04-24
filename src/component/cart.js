@@ -184,7 +184,7 @@ class Cart extends Component {
         localStorage.setItem("order", JSON.stringify(this.state.order));
     }
 
-    removeOrder =(productId, context) =>{
+    removeOrder = (productId, context) => {
         this.state.order = this.state.order.filter(orderItem => {
             return orderItem.product.id !== productId;
         })
@@ -192,23 +192,28 @@ class Cart extends Component {
         context.forceUpdate();
     }
 
-    createOrder = () => {
+    createOrder = async () => {
         let user = this.state.user;
         let orderData = this.state.order;
         var order = {
             user: user,
             orderData: orderData
         }
-        OrderService.createOrder(order).then(
-            this.setState({modalShow: true})
-        ).catch(throwable => {
-            throwable.json().then(json => this.setState({error: json.message}));
-        })
+        let response = await OrderService.createOrder(order);
+        if (response.ok) {
+            this.showModal()
+        } else {
+            response.json().then(json => this.setState({error: json.message}));
+        }
+    }
+
+    showModal() {
+        localStorage.removeItem("order");
+        this.setState({modalShow: true});
     }
 
     handleClose = () => {
         this.setState({modalShow: false});
-        localStorage.removeItem("order");
         this.props.history.push('/');
     }
 }

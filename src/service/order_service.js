@@ -1,17 +1,18 @@
-import {handleResult} from "./responce_handler";
+import {handleSyncResult} from "./responce_handler";
 
 export const OrderService = {
     createOrder
 }
-const ordersBasePath = 'orders'
+const ordersBasePath = '/orders'
 
-function createOrder(order) {
+async function createOrder(order) {
     const properties = {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
+            'Authorization': "Bearer " + localStorage.getItem('token')
         },
         body: JSON.stringify(order)
     };
-    return fetch(ordersBasePath, properties).then(data => handleResult(data));
+    return fetch(ordersBasePath, properties).then(data => handleSyncResult(data));
 }

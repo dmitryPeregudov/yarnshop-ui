@@ -38,7 +38,7 @@ class Header extends Component {
                                     className="img_size"
                                     src="img/favicon.png"/></a>
                                 <Nav.Link href="/">Главная</Nav.Link>
-                                {this.state.productLoaded ?
+                                {!(this.isAdminUser() || this.isSellerUser()) && this.state.productLoaded ?
                                     <NavDropdown title="Товары" id="basic-nav-dropdown">
                                         <div>
                                             {this.state.products && this.state.products.map(product =>
@@ -50,6 +50,11 @@ class Header extends Component {
                                     : null}
                                 <Nav.Link href="/info">О нас</Nav.Link>
                                 <div className={"displayRight displayInline"}>
+                                    {this.isAdminUser() ?
+                                        <div className='displayInline'><Nav.Link href="/createAdminUser">Добавить
+                                            управляющего</Nav.Link>
+                                            <Nav.Link href={"/users"}>Пользователи</Nav.Link></div>
+                                        : null}
                                     {this.state.storage.isAuthenticated() ?
                                         <NavDropdown title={this.state.storage.getFirstName()} id="basic-nav-dropdown">
                                             <NavDropdown.Item onClick={this.routeToChangePassword}>Сменить
@@ -63,7 +68,8 @@ class Header extends Component {
                                             <Nav.Link href="/register">Зарегистрироваться</Nav.Link>
                                             <Nav.Link href="/login">Войти</Nav.Link>
                                         </div>}
-                                    <Nav.Link href="/cart" className={"displayRight"}>Корзина</Nav.Link>
+                                    {!(this.isAdminUser() || this.isSellerUser()) ?
+                                        <Nav.Link href="/cart" className={"displayRight"}>Корзина</Nav.Link> : null}
                                 </div>
                             </Nav>
                         </Navbar.Collapse>
@@ -71,6 +77,14 @@ class Header extends Component {
                 </div>
             </header>
         )
+    }
+
+    isAdminUser() {
+        return this.state.storage.getRole() === "admin";
+    }
+
+    isSellerUser() {
+        return this.state.storage.getRole() === "seller";
     }
 
     roteToMainPage = () => {

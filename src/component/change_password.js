@@ -65,17 +65,17 @@ class ChangePassword extends Component {
         )
     }
 
-    changePassword = () => {
+    changePassword = async () => {
         let error = validate(this.state.newPassword, this.state.passwordConfirm)
         if (!error) {
-            UserService.changePassword(this.state.oldPassword, this.state.newPassword, this.state.id)
-                .then(data => {
-                    this.props.history.push('/')
-                })
-                .catch(throwable => {
-                    throwable.json().then(json => this.setState({error: json.message}));
-                })
-        } else this.setState({error})
+            let result = await UserService.changePassword(this.state.oldPassword, this.state.newPassword, this.state.id);
+            if (result.ok) {
+                this.props.history.push('/')
+            } else {
+                result.json().then(json => this.setState({error: json.message}));
+            }
+        } else
+            this.setState({error})
     }
 
     eventChange = (event) => {

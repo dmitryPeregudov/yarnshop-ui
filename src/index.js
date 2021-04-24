@@ -13,6 +13,9 @@ import ChangePassword from "./component/change_password";
 import ChangeInfo from "./component/change_info";
 import Product from "./component/product";
 import Cart from "./component/cart";
+import Admin_Router from "./Admin_Router";
+import CreateAdmin from "./component/create_admin";
+import UsersInfo from "./component/Users_info";
 
 ReactDOM.render(
     <BrowserRouter>
@@ -26,6 +29,8 @@ ReactDOM.render(
         <Route path={'/changeInfo/:id'} component={ChangeInfo}/>
         <Route path={'/product/:id/:productName'} component={Product}/>
         <Route path={'/cart'} component={Cart}/>
+        <Admin_Router path={"/createAdminUser"} component={CreateAdmin}/>
+        <Admin_Router path={"/users"} component={UsersInfo}/>
     </BrowserRouter>,
     document.getElementById('root'),
 );
