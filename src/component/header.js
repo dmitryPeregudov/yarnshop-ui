@@ -50,6 +50,7 @@ class Header extends Component {
                                     : null}
                                 <Nav.Link href="/info">О нас</Nav.Link>
                                 <div className={"displayRight displayInline"}>
+                                    {this.isSellerUser() ? this.renderSellerLinks() : null}
                                     {this.isAdminUser() ?
                                         <div className='displayInline'><Nav.Link href="/createAdminUser">Добавить
                                             управляющего</Nav.Link>
@@ -76,6 +77,14 @@ class Header extends Component {
                     </Navbar>
                 </div>
             </header>
+        )
+    }
+
+    renderSellerLinks() {
+        return (
+            <div className='displayInline'><Nav.Link href="/productTypes">Продукты</Nav.Link>
+                <Nav.Link href={"/orders"}>Заказы</Nav.Link></div>
+
         )
     }
 
