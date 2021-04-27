@@ -19,6 +19,7 @@ import UsersInfo from "./component/Users_info";
 import Seller_router from "./Router/Seller_router";
 import Product_types from "./component/Product_types";
 import Products from "./component/Products";
+import Orders from "./component/Orders";
 
 ReactDOM.render(
     <BrowserRouter>
@@ -36,6 +37,7 @@ ReactDOM.render(
         <Admin_Router path={"/users"} component={UsersInfo}/>
         <Seller_router exact path={"/productTypes"} component={Product_types}/>
         <Seller_router exact path={"/products/:productTypeId/:productTypeName"} component={Products}/>
+        <Seller_router exact path={"/orders"} component={Orders}/>
     </BrowserRouter>,
     document.getElementById('root'),
 );
