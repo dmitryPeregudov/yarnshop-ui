@@ -20,6 +20,7 @@ import Seller_router from "./Router/Seller_router";
 import Product_types from "./component/Product_types";
 import Products from "./component/Products";
 import Orders from "./component/Orders";
+import Order_info from "./component/order_info";
 
 ReactDOM.render(
     <BrowserRouter>
@@ -38,6 +39,7 @@ ReactDOM.render(
         <Seller_router exact path={"/productTypes"} component={Product_types}/>
         <Seller_router exact path={"/products/:productTypeId/:productTypeName"} component={Products}/>
         <Seller_router exact path={"/orders"} component={Orders}/>
+        <Seller_router path={'/orderInfo/:id'} component={Order_info}/>
     </BrowserRouter>,
     document.getElementById('root'),
 );

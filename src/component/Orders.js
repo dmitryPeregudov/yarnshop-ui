@@ -1,6 +1,6 @@
 import {Component} from "react";
 import {OrderService} from "../service/order_service";
-import {Button, Modal, NavDropdown} from "react-bootstrap";
+import {Button, Modal} from "react-bootstrap";
 
 class Orders extends Component {
     state = {
@@ -82,7 +82,9 @@ class Orders extends Component {
                         {this.state.orders && this.state.orders.map(order => {
                             return (
                                 <tr>
-                                    <td>{order.id}</td>
+                                    <td>
+                                        <Button onClick={() => this.routeToOrder(order.id)}>{order.id}</Button>
+                                    </td>
                                     <td>{order.user.login}</td>
                                     <td>{this.calculateTotal(order)} грн</td>
                                     <td>{order.orderStatus.name}</td>
@@ -184,6 +186,9 @@ class Orders extends Component {
         this.setState({deleteOrderModalShow: false, orderIdToChange: 0})
     }
 
+    routeToOrder = (id) => {
+        this.props.history.push("/orderInfo/" + id)
+    }
     handleNewStatusCLose = () => {
         this.setState({newStatusModalShow: false, newStatus: 0})
     }

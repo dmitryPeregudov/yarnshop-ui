@@ -4,7 +4,8 @@ export const OrderService = {
     createOrder,
     getAllOrders,
     deleteOrder,
-    updateOrderStatus
+    updateOrderStatus,
+    getOrderById
 }
 const ordersBasePath = '/orders'
 
@@ -38,7 +39,6 @@ function updateOrderStatus(id, statusId) {
     };
     return fetch(ordersBasePath + '/' + id + '/' + statusId, properties)
         .then(data => handleSyncResult(data));
-
 }
 
 function deleteOrder(id) {
@@ -49,5 +49,13 @@ function deleteOrder(id) {
         },
     };
     return fetch(ordersBasePath + '/' + id, properties).then(data => handleSyncResult(data));
+}
 
+function getOrderById(id) {
+    const properties = {
+        headers: {
+            'Authorization': "Bearer " + localStorage.getItem('token')
+        },
+    }
+    return fetch(ordersBasePath + '/' + id, properties).then(data => handleResult(data));
 }
