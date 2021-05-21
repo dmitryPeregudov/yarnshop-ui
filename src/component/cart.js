@@ -1,6 +1,6 @@
 import {Component} from "react";
 import TokenStorage from "../service/token_storage";
-import {Button, Modal} from "react-bootstrap";
+import {Button, Modal, Table} from "react-bootstrap";
 import {OrderService} from "../service/order_service";
 
 class Cart extends Component {
@@ -35,7 +35,7 @@ class Cart extends Component {
                             </Button>
                         </Modal.Footer>
                     </Modal>
-                    <table className={'fullWidth'}>
+                    <Table style={{border:'1px solid black'}} className={'fullWidth'}>
                         <thead className={'fullWidth'}>
                         <th>
                             <td>Тип пряжи</td>
@@ -98,7 +98,7 @@ class Cart extends Component {
                             )
                         })}
                         </tbody>
-                    </table>
+                    </Table>
                     <div className={'fullWidth'}>
                         <div className={'title_bg'}>Всего: {this.calculatePrice()} грн</div>
                     </div>

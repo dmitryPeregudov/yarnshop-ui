@@ -1,8 +1,10 @@
 import {Component} from "react/cjs/react.production.min";
+import {Image} from "react-bootstrap";
 
 class Main_page extends Component {
     render() {
-        return (<main>
+        return (<div>
+                <main>
                 <center> <span className="title_bg center"> Информация </span></center>
 
                 <p className="ul_font p_line">
@@ -23,7 +25,13 @@ class Main_page extends Component {
                     <li>ЕЖЕНЕДЕЛЬНОЕ пополнение ассортимента.</li>
                     <li> Бесплатный размот от 50 г.</li>
                 </ul>
-            </main>
+                </main>
+                <div >
+                    <center>
+                    <Image style={{width:'60%',height:350}} src={'img/bg.jpg'}/>
+                    </center>
+                </div>
+            </div>
         )
     }
 }

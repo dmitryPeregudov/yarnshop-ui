@@ -1,119 +1,155 @@
-.nav_f{
-	font-size: 25px;
+.nav_f {
+    font-size: 25px;
 }
-.img_size{
-	height: 35px;
+
+.img_size {
+    height: 35px;
 }
-body{
-	background: linear-gradient(180deg,#FC868C, #FCA6AA	);
-	background-size: cover; /* Современные браузеры */
+
+body {
+    background: linear-gradient(180deg, #FC868C, #FCA6AA);
+    background-size: cover; /* Современные браузеры */
     background-attachment: fixed;
 
 }
-.nav_bg{
-	background-color: #FC868C !important;
-	font-size: 100% !important; /*задаем размеры в % для резиновой верстки*/
+
+.nav_bg {
+    background-color: #FC868C !important;
+    font-size: 100% !important; /*задаем размеры в % для резиновой верстки*/
 }
-.title_bg{
-	font-style: italic;
-	font-size: 200%;  
-	text-align: center;	
-	height: 50px;
-	border-radius: 5px;
+
+.title_bg {
+    font-style: italic;
+    font-size: 200%;
+    text-align: center;
+    height: 50px;
+    border-radius: 5px;
 }
-.ul_font{
-	font-size: 150%;
-	text-align: justify;
-	margin:20px;
+
+.ul_font {
+    font-size: 150%;
+    text-align: justify;
+    margin: 20px;
 }
-p.p_line{ 
+
+p.p_line {
     text-indent: 1.5em; /* Отступ первой строки */
     text-align: justify; /* Выравнивание по ширине */
-   }
-.marg{
-	margin: 30px;
+}
+
+.marg {
+    margin: 30px;
 }
 
 .scale {
     transition: 1s; /* Время эффекта */
-   }
-.scale:hover {
-    transform: scale(1.2); /* Увеличиваем масштаб изображения*/ 
-}
-.smallfont{
-	font-size: 15px;
-	text-align: justify; /* Выравнивание по ширине */
-    font-family: 'Times New Roman';
-}
-.overflow{
-	white-space: nowrap; /*чтобы не выходило за пределы изображения*/
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-.size{
-	width: 260px;
-	height: 250px;
-}
-.marg_top{
-	margin-top: 20px;
-}
-.div_bg{
-	background-image: url(public/img/bg.jpg); /*../ выходим из папки css в папку Курсовая_web*/
-	background-size: cover; /* Современные браузеры */
-	height: 350px;
 }
 
-div.row a{
+.scale:hover {
+    transform: scale(1.2); /* Увеличиваем масштаб изображения*/
+}
+
+.smallfont {
+    font-size: 15px;
+    text-align: justify; /* Выравнивание по ширине */
+    font-family: 'Times New Roman';
+}
+
+.overflow {
+    white-space: nowrap; /*чтобы не выходило за пределы изображения*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.size {
+    width: 260px;
+    height: 250px;
+}
+
+.marg_top {
+    margin-top: 20px;
+}
+
+.div_bg {
+    background-image: url(public/img/bg.jpg); /*../ выходим из папки css в папку Курсовая_web*/
+    background-size: cover; /* Современные браузеры */
+    height: 350px;
+}
+
+div.row a {
     color: black !important; /* Цвет ссылок */
     font-weight: bold;
 }
-div.row a:hover{
-	color: #A61919 !important; /*!important перебиваем настройки бутстрапа*/
+
+div.row a:hover {
+    color: #A61919 !important; /*!important перебиваем настройки бутстрапа*/
 }
-.center{
-	text-align: center;
-	margin: auto;
+
+.center {
+    text-align: center;
+    margin: auto;
 }
-.right{
-	text-align: right !important;
+
+.right {
+    text-align: right !important;
 }
-.left{
-	text-align: left;
+
+.left {
+    text-align: left;
 }
-.button{
-	font-size: 110% !important;
+
+.button {
+    font-size: 110% !important;
 }
+
 .container_log {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
 }
-a.color{
-	color: white;
+
+a.color {
+    color: white;
 }
 
-div.displayInline{
-	display: inline-flex;
+div.displayInline {
+    display: inline-flex;
 }
 
-.displayRight{
-	margin-left: auto;
+.displayRight {
+    margin-left: auto;
 }
 
-.fullWidth{
-	width: 100%;
+.fullWidth {
+    width: 100%;
 }
 
-.word-wrap{
-	word-wrap: break-word;
+.word-wrap {
+    word-wrap: break-word;
 }
 
-.center{
-	margin-left: auto;
-	margin-right: auto;
+.center {
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.width30{
-	width: 30%;
+.width30 {
+    width: 30%;
+}
+
+#footer {
+    flex: 0 0 auto;
+}
+
+header a.nav-link {
+    font-size: 120%;
+}
+
+.message {
+    width: 30%;
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    border: 1px solid;
 }

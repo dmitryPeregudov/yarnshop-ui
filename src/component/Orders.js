@@ -1,6 +1,6 @@
 import {Component} from "react";
 import {OrderService} from "../service/order_service";
-import {Button, Modal} from "react-bootstrap";
+import {Button, Modal, Table} from "react-bootstrap";
 
 class Orders extends Component {
     state = {
@@ -50,7 +50,7 @@ class Orders extends Component {
             <div className="container marg_top">
                 <div className="row">
                     {this.renderModals()}
-                    <table className={'fullWidth'}>
+                    <Table style={{border:'1px solid black'}} className={'fullWidth'}>
                         <thead className={'fullWidth'}>
                         <th>
                             <td>
@@ -98,7 +98,7 @@ class Orders extends Component {
                             )
                         })}
                         </tbody>
-                    </table>
+                    </Table>
                 </div>
             </div>
         )

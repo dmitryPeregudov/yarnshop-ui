@@ -1,6 +1,6 @@
 import {Component} from "react";
 import {productService} from "../service/products_service";
-import {Button, Modal, NavDropdown} from "react-bootstrap";
+import {Button, Modal, NavDropdown, Table} from "react-bootstrap";
 
 class Product_types extends Component {
 
@@ -59,7 +59,7 @@ class Product_types extends Component {
                 <div className="row">
                     <Button onClick={this.showAddModal}>Добавить продуктовую Линию</Button>
                     {this.renderModals()}
-                    <table className={'fullWidth'}>
+                    <Table style={{border:'1px solid black'}} className={'fullWidth'}>
                         <thead className={'fullWidth'}>
                         <th>
                             <td className={"width30"}>
@@ -71,7 +71,7 @@ class Product_types extends Component {
                                 Описание
                             </td>
                         </th>
-                        <th className={"width30"}>
+                        <th>
                             <td>
                                 Действия
                             </td>
@@ -90,13 +90,15 @@ class Product_types extends Component {
                                         </NavDropdown>
                                     </td>
                                     <td>{product.info}</td>
+                                    <td>
                                     <Button
                                         onClick={() => this.triggerRemoveProductModal(product.id, product.name)}>Удалить</Button>
+                                    </td>
                                 </tr>
                             )
                         })}
                         </tbody>
-                    </table>
+                    </Table>
                 </div>
             </div>
         )

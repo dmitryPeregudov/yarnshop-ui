@@ -28,7 +28,7 @@ class Header extends Component {
 
     render() {
         return (
-            <header className="navbar navbar-expand-lg navbar-dark bg-primary ">
+            <header className=" navbar navbar-expand-lg navbar-dark bg-primary ">
                 <div className={'fullWidth'}>
                     <Navbar expand="lg" className={"fullWidth"}>
                         <Navbar.Collapse id="basic-navbar-nav"
@@ -71,6 +71,7 @@ class Header extends Component {
                                         </div>}
                                     {!(this.isAdminUser() || this.isSellerUser()) ?
                                         <Nav.Link href="/cart" className={"displayRight"}>Корзина</Nav.Link> : null}
+                                    <Nav.Link href={"/forum"}>Форум</Nav.Link>
                                 </div>
                             </Nav>
                         </Navbar.Collapse>

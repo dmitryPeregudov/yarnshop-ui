@@ -29,7 +29,8 @@ class Info extends Component {
                     <ul type="none">
                         {this.state.socialMedia && this.state.socialMedia.map(socialMedia =>
                             <li>
-                                <a href={socialMedia.link}>{socialMedia.name}</a>
+                                <a style={{color: 'black', textDecoration: 'underline'}}
+                                   href={socialMedia.link}>{socialMedia.name}</a>
                             </li>
                         )}
                     </ul>

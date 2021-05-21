@@ -21,6 +21,8 @@ import Product_types from "./component/Product_types";
 import Products from "./component/Products";
 import Orders from "./component/Orders";
 import Order_info from "./component/order_info";
+import Footer from "./component/footer";
+import Forum from "./component/forum";
 
 ReactDOM.render(
     <BrowserRouter>
@@ -34,12 +36,14 @@ ReactDOM.render(
         <Route path={'/changeInfo/:id'} component={ChangeInfo}/>
         <Route path={'/product/:id/:productName'} component={Product}/>
         <Route path={'/cart'} component={Cart}/>
+        <Route path={'/forum'} component={Forum}/>
         <Admin_Router path={"/createAdminUser"} component={CreateAdmin}/>
         <Admin_Router path={"/users"} component={UsersInfo}/>
         <Seller_router exact path={"/productTypes"} component={Product_types}/>
         <Seller_router exact path={"/products/:productTypeId/:productTypeName"} component={Products}/>
         <Seller_router exact path={"/orders"} component={Orders}/>
         <Seller_router path={'/orderInfo/:id'} component={Order_info}/>
+        <Footer/>
     </BrowserRouter>,
     document.getElementById('root'),
 );

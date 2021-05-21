@@ -2,6 +2,7 @@ import {Component} from "react";
 import {validate} from "../validation/new_user_validation";
 import {UserService} from "../service/user_service";
 import TokenStorage from "../service/token_storage";
+import {Table} from "react-bootstrap";
 
 class Register extends Component {
     state = {

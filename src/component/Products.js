@@ -1,6 +1,6 @@
 import {Component} from "react";
 import {productService} from "../service/products_service";
-import {Button, Modal, NavDropdown} from "react-bootstrap";
+import {Button, Modal, NavDropdown, Table} from "react-bootstrap";
 
 class Products extends Component {
     state = {
@@ -77,12 +77,15 @@ class Products extends Component {
 
     renderProductView() {
         return (
-            <div className="container marg_top">
-                <div className="row">
+            <div>
+                <div>
+                    <br/>
                     <Button onClick={this.showAddModal}>Добавить продукт</Button>
+                    <br/>
                     {this.renderProductModals()}
-                    <table className={'fullWidth'}>
-                        <thead className={'fullWidth'}>
+                    <br/>
+                    <Table style={{width:'80%',border:'1px solid black'}}>
+                        <thead>
                         <th>
                             <td>
                                 Тип пряжи
@@ -134,13 +137,15 @@ class Products extends Component {
                                     <td>{product.weight}</td>
                                     <td>{product.thickness}</td>
                                     <td>{product.color}</td>
+                                    <td>
                                     <Button
                                         onClick={() => this.triggerRemoveProductModal(product.id, product.description)}>Удалить</Button>
+                                    </td>
                                 </tr>
                             )
                         })}
                         </tbody>
-                    </table>
+                    </Table>
                 </div>
             </div>
         )

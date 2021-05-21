@@ -1,5 +1,6 @@
 import {Component} from "react";
 import {OrderService} from "../service/order_service";
+import {Table} from "react-bootstrap";
 
 class Order_info extends Component {
     state = {
@@ -45,7 +46,7 @@ class Order_info extends Component {
                     {this.state.order.user ?
                         <div>
                             <h2>Информация о пользователе</h2>
-                            <table className={'fullWidth'}>
+                            <Table style={{border:'1px solid black'}} className={'fullWidth'}>
                                 <thead className={'fullWidth'}>
                                 <th>
                                     <td>Логин</td>
@@ -84,13 +85,13 @@ class Order_info extends Component {
                                     <td>{this.state.order.user.dateOfBirth}</td>
                                 </tr>
                                 </tbody>
-                            </table>
+                            </Table>
                         </div>
                         : <div/>
                     }
                     <br/>
                     <h2>Информация о заказе</h2>
-                    <table className={'fullWidth'}>
+                    <Table style={{border:'1px solid black'}} className={'fullWidth'}>
 
                         <thead className={'fullWidth'}>
                         <th>
@@ -146,16 +147,16 @@ class Order_info extends Component {
                                 </tr>
                             )
                         })}
-                        <br/>
-                        {this.state.order.orderStatus ?
-                            <div className={"inline"}>
-                                <a>Статус: </a>
-                                <a>{this.state.order.orderStatus.name}</a>
-                            </div>
-                            : <div/>
-                        }
                         </tbody>
-                    </table>
+                    </Table>
+                    <br/>
+                    {this.state.order.orderStatus ?
+                        <div className={"inline"}>
+                            <a>Статус: </a>
+                            <a>{this.state.order.orderStatus.name}</a>
+                        </div>
+                        : <div/>
+                    }
                 </div>
             </div>
         )

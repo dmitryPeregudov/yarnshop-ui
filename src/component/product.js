@@ -42,13 +42,13 @@ class Product extends Component {
                             return (<div className="col-xl-3 col-lg-4 col-sm-6">
                                 <Card>
                                     <Card style={{width: '18rem'}}>
-                                        <Card.Img variant="top"
+                                        <Card.Img className={'size scale'} variant="top"
                                                   src={"../../" + product.picture}/>
-                                        <Card.Body>
-                                            <Card.Title>{product.name}</Card.Title>
-                                            <Card.Subtitle className="mb-2 text-muted">{product.price} грн
+                                        <Card.Body >
+                                            <Card.Title>{product.yarnType}</Card.Title>
+                                            <Card.Subtitle className="mb-2 text-muted nav_f">{product.price} грн
                                                 /{product.weight} г</Card.Subtitle>
-                                            <Card.Text>{product.description}</Card.Text>
+                                            <Card.Text className={'smallfont'}>{product.description}</Card.Text>
                                             <Button variant="primary"
                                                     onClick={(event) => this.addProductToBash(product, event, this)}>
                                                 {this.isProductAddedToOrder(product) ? "Удалить" : "Добавить в корзину"}</Button>
