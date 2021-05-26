@@ -93,9 +93,13 @@ class UsersInfo extends Component {
                                     <td>{user.address}</td>
                                     <td>{user.email}</td>
                                     <td>{user.role.name}</td>
-                                    <td><Button
-                                        onClick={() => this.triggerRemoveUserModal(user.id, user.login)}>Удалить</Button>
-                                    </td>
+                                    {
+                                        this.isUserNotCustomer(user) ?
+                                            <td><Button
+                                                onClick={() => this.triggerRemoveUserModal(user.id, user.login)}>Удалить</Button>
+                                            </td>
+                                            : null
+                                    }
                                 </tr>
                             )
                         })}
@@ -109,6 +113,10 @@ class UsersInfo extends Component {
 
     triggerRemoveUserModal(id, login) {
         this.setState({userToRemove: login, modalShow: true, userIdToRemove: id})
+    }
+
+    isUserNotCustomer = (user) => {
+        return user.role.name !== "customer"
     }
 
     handleClose = () => {
