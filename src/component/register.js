@@ -2,7 +2,6 @@ import {Component} from "react";
 import {validate} from "../validation/new_user_validation";
 import {UserService} from "../service/user_service";
 import TokenStorage from "../service/token_storage";
-import {Table} from "react-bootstrap";
 
 class Register extends Component {
     state = {
@@ -143,11 +142,14 @@ class Register extends Component {
                 .then(response => response.json())
                 .then(data => {
                     const storage = new TokenStorage();
-                    storage.loginUser(data.id,data.token, data.firstName, data.lastName, data.role, data.login);
+                    storage.loginUser(data.id, data.token, data.firstName, data.lastName, data.role, data.login);
                     this.props.history.push('/')
                 })
                 .catch(throwable => {
                     error = 'Что-то пошло не так'
+                    if (throwable.status === 409) {
+                        error = "Пользователь уже существует";
+                    }
                     this.setState({error})
                 })
         } else this.setState({error})
